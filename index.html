@@ -1,99 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>Mint Blizzard</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<style>
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 </head>
+<body style="background-image: url(./masonry2_files/background.png);background-attachment: fixed;">
 
-<body>
-<div class = "page">
 
-<div class="header">
-        <h1>Mint Blizzard</h1>
-        <h2>Mint Blizzard is maintained by me (Mint) and my brother (Blizzard). This website is mostly an attempt to escape 
-		the norms and echochambers in our lives, as we share ideas and creative efforts. </h2>
+
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Home</a>
+  <a href="Page_2.html">Page_2</a>
+  <a href="#">Page_3</a>
+  <a href="#">Page_4</a>
 </div>
 
-<div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('music')"> Music</button>
-  <button class="btn" onclick="filterSelection('videos')"> Videos</button>
-  <button class="btn" onclick="filterSelection('pictures')"> Pictures</button>
-  <button class="btn" onclick="filterSelection('code')"> Code Stuff</button>
-  <button class="btn" onclick="filterSelection('bloggy')"> Bloggy Stuff</button>
-</div>
-
-<div class="container">
-  <div class="filterDiv videos">
-	<iframe src="https://www.youtube-nocookie.com/embed/HqX6mEIkMEo?modestbranding=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div class="filterDiv videos">
-	<iframe src="https://www.youtube.com/embed/VFsXG0og3_8" frameborder="0" 
-	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="filterDiv music">
-	<iframe scrolling="no" frameborder="no" allow="autoplay" 
-	src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/705047101&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-  </div>
-  <div class="filterDiv music">
-	<iframe scrolling="no" frameborder="no" allow="autoplay" 
-	src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/537386733&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-  </div>
-  <div class="filterDiv pictures">
-	<img src="image1.jpg" />
-  </div>
-  <div class="filterDiv pictures videos">
-	<img src="https://i.imgur.com/OFvYPT7.gif"/>
-  </div>
-  <div class="filterDiv code">404 - add code post</div>
-  <div class="filterDiv bloggy">404 - add blog post</div>
-</div>
-</div>
+<h1 style="margin-left: 40px; font-size:60px; margin-bottom: 0px; color:white">Mint Blizzard</h1>
+<p style="margin-left: 40px;color:white">Home Page!!!!</p>
+<span style="font-size:30px;cursor:pointer;margin-left:40px;color:white" onclick="openNav()">&#9776; Menu</span>
 
 <script>
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
 }
 
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
 }
 </script>
 
-</body>
+
+
+
+
+
+
+
+
+<div class="masonry-wrapper"><div class="masonry">
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/Texture2.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post2.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post3.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post4.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post5.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post6.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post7.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post8.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/Texture2.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post2.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post3.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post4.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post5.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post6.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post7.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  <div class="masonry-item">
+	<a href="blog_post1.html">
+    <img src="./masonry2_files/blog_post8.png" alt="Dummy Image" class="masonry-content">
+	</a>
+  </div>
+  
+  
+</div>
+<div class="masonry-footer">
+  <p>Created with &#10084; with <a href="//w3bits.com/tools/masonry-generator/" target="_blank" rel="external noopener nofollow">CSS Masonry Generator</a></p>
+</div></div></body>
 </html>
